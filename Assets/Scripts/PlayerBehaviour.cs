@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private Rigidbody rb;
-    private Vector3 move;
-    [SerializeField]private float speed;
+    private Vector3 move;    
     private Animator anim;
     private bool canJump = true;
+    
+    [SerializeField]
+    private float speed;
 
-    void Start()
-    {
+    void Start() {
         anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate() 
-    {
+    void FixedUpdate() {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         move = hor * transform.right + ver * transform.forward;
@@ -28,8 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("teste", false);
     }
 
-    void Update()
-    {
+    void Update() {
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             anim.SetBool("jump", true);   
